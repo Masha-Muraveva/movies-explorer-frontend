@@ -10,7 +10,9 @@ function Header({ loggedIn }) {
     <>
       {!loggedIn ? (
         <header className="header" id="header">
-          <img src={logo} alt="Логотип сайта" className="header__logo" />
+          <Link to="/" className="header__logo">
+            <img src={logo} alt="Логотип сайта" />
+          </Link>
           <div className="header__buttons-wrapper">
             <Link to="/signup" className="header__button">
               Регистрация
@@ -22,8 +24,10 @@ function Header({ loggedIn }) {
         </header>
       ) : (
         <header className="header" id="header">
-          <img src={logo} alt="Логотип" className="header__logo" />
-          <div className="header__button-container_films">
+          <Link to="/" className="header__logo">
+            <img src={logo} alt="Логотип" />
+          </Link>
+          <div className="header__films-wrapper">
             <NavLink to="/movies" className="header__button" activeClassName="header__button_active">
               Фильмы
             </NavLink>
@@ -31,7 +35,7 @@ function Header({ loggedIn }) {
               Сохранённые фильмы
             </NavLink>
           </div>
-          <div className="header__button-container">
+          <div className="header__button-wrapper">
             <Link to="/profile" className="header__account-button">
               Аккаунт
             </Link>
