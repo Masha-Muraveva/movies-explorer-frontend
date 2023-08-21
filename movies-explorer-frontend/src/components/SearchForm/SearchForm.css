@@ -94,7 +94,7 @@ input::-ms-input-placeholder {
 
 @media screen and (max-width: 1023px) {
   .search {
-    padding: 86px 30px 61px;
+    padding: 86px 30px 35px;
   }
 }
 

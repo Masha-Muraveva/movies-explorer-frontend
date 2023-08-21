@@ -60,14 +60,14 @@ top: 10px;
 .card__info-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 14px 12px;
+  /*padding: 14px 12px;
+  margin-top: 10px;*/
 }
 
 .card__name {
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  /*line-height: 16px;*/
   max-width: 250px;
 }
 
@@ -90,6 +90,11 @@ top: 10px;
 @media screen and (max-width: 1023px) {
   .card__image {
     height: 190px;
+  }
+
+  .card__info-wrapper {
+    padding: 0;
+    margin-top: 15px;
   }
 }
 
