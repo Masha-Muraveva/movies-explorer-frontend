@@ -1,5 +1,4 @@
 import React from "react";
-import "./Login.css";
 import ActionForm from "../ActionForm/ActionForm";
 
 function Login() {
@@ -8,7 +7,7 @@ function Login() {
       title="Рады видеть!"
       buttonText="Войти"
       question="Еще не зарегистрированы?"
-      linkText=" Регистрация"
+      linkText="Регистрация"
       link="/signup"
     >
       <label className="form__field">

@@ -1,0 +1,104 @@
+.card__wrapper {
+  border-radius: 10px;
+  position: relative;
+}
+
+.card__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.card__button_type_add-saving {
+  all: unset;
+  width: 72px;
+  height: 21px;
+  background-color: #313131;
+  color: #fff;
+  border: none;
+  background-position: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  border-radius: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-image: url(../../images/saveCard.svg);
+}
+
+.card__button_type_delete-saving {
+all: unset;
+background-image: url(../../images/deleteSavedFilm.svg);
+width: 21px;
+height: 21px;
+background-size: 100%;
+content: '';
+position: absolute;
+right: 10px;
+top: 10px;
+}
+
+.card__button_type_saved {
+  all: unset;
+  background-image: url(../../images/likeActive.svg);
+  width: 21px;
+  height: 21px;
+  background-size: 100%;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.card__image {
+  width: 100%;
+  height: 201px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card__info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px;
+}
+
+.card__name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  /*line-height: 16px;*/
+  max-width: 250px;
+}
+
+.card__duration {
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #8b8b8b;
+  background-color: #2f2f2f;
+  width: 52px;
+  height: 18px;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1023px) {
+  .card__image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card__image {
+    height: 168px;
+  }
+
+  .card__info-wrapper {
+    padding: 0;
+  }
+}

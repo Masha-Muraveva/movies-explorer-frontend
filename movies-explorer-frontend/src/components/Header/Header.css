@@ -7,18 +7,20 @@
   justify-content: space-between;
 }
 
+.header__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
 .header__buttons-wrapper {
   margin-left: auto;
   display: flex;
   gap: 30px;
   align-items: center;
-}
-
-.header__films-wrapper {
-  display: flex;
-  gap: 21px;
-  justify-content: space-between;
-  margin-right: 20px;
 }
 
 .header__button {
@@ -27,20 +29,6 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  word-wrap: break-word;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-}
-
-.header__button {
-  font-weight: 500;
-  min-height: 32px;
-  text-align: right;
-  line-height: 16px;
-  word-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +39,7 @@
 .header__button:hover {
   cursor: pointer;
   opacity: 0.8;
+  text-decoration: underline;
 }
 
 .header__button_accent {
@@ -58,6 +47,49 @@
   background-color: #3ddc84;
   min-width: 76px;
   border-radius: 3px;
+}
+
+.header__buttons-wrapper-auth {
+  display: flex;
+  gap: 21px;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.header__button_type_auth {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.header__buttons-wrapper-item {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header__films-wrapper {
+  display: flex;
+  gap: 21px;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.header__account-button {
+  color: #fff;
+  background-color: #313131;
+  width: 100px;
+  height: 32px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .header__account-button:hover {
@@ -68,8 +100,8 @@
 .header__menu-button {
   background-color: transparent;
   border: none;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 43px;
   display: none;
 }
 
@@ -83,14 +115,11 @@
     padding: 0 30px;
   }
 
-  .header__button-container_films {
-    display: none;
-  }
-
   .header__account-button {
     display: none;
   }
-  .header__button-container-films {
+
+  .header__buttons-wrapper-auth {
     display: none;
   }
 
@@ -106,7 +135,7 @@
     padding: 0 14px;
   }
 
-  .header__button-container {
+  .header__button-wrapper {
     gap: 14px;
   }
 
@@ -116,7 +145,7 @@
     line-height: 16px;
   }
 
-  .header__button-green {
+  .header__button_accent {
     min-width: 54px;
   }
 }

@@ -1,14 +1,19 @@
 import React from 'react';
-import './SavedMovies.css';
+import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 
 
 function SavedMovies() {
     return (
-      <div className="saved-movies">
+      <section className="movies">
+        <Header />
+        <SearchForm />
         <MoviesCardList />
-      </div>
-    );
+        <Footer />
+      </section>
+    )
 }
   
 export default SavedMovies;

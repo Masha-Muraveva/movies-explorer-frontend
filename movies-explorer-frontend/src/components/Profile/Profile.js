@@ -21,7 +21,7 @@ function Profile() {
               maxLength="40"
               required
             />
-            <span className="profile__input-error">{}</span>
+            <span className="profile__input-error"></span>
           </label>
 
           <div className="profile__border"></div>
@@ -34,12 +34,12 @@ function Profile() {
               type="email"
               required
             />
-            <span className="profile__input-error">{}</span>
+            <span className="profile__input-error"></span>
           </label>
-          <button type="button" className="profile__save">
+          <button type="button" className="profile__edit-button">
             Редактировать
           </button>
-          <button type="button" className="profile__logout">
+          <button type="button" className="profile__logout-button">
             Выйти из аккаунта
           </button>
         </form>

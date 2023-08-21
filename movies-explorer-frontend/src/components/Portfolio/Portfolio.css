@@ -20,6 +20,11 @@
   padding: 0;
 }
 
+.portfolio__paragraph {
+padding: 0;
+margin: 0;
+}
+
 .portfolio__link {
   padding-top: 20px;
   display: flex;
@@ -49,6 +54,11 @@
   letter-spacing: -0.04em;
 }
 
+.portfolio__icon {
+  width: 29px;
+  height: 60px;
+}
+
 @media screen and (max-width: 1023px) {
   .portfolio {
     padding: 0 50px 90px 50px;
@@ -56,6 +66,10 @@
 
   .portfolio__text {
     font-size: 28px;
+  }
+
+  .portfolio__icon {
+    width: 27px;
   }
 }
 
@@ -72,5 +86,10 @@
   .portfolio__text {
     font-size: 18px;
     line-height: 28px;
+  }
+
+  .portfolio__icon {
+    width: 18px;
+    height: 28px;
   }
 }

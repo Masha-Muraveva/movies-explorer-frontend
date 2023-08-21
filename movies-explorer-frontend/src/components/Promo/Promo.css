@@ -44,7 +44,7 @@
 
 @media screen and (max-width: 576px) {
   .promo {
-    padding: 14px 14px 0 14px;
+    padding: 0 14px 0 14px;
   }
   .promo__wrapper {
     min-height: 586px;

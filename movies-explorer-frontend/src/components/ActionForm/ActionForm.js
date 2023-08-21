@@ -27,8 +27,8 @@ function ActionForm({
           disabled={isDisabled ? true : false}
           className={
             isDisabled || isLoading
-              ? "form__button-save form__button-save_inactive"
-              : "form__button-save"
+              ? "form__save-button form__save-button_inactive"
+              : "form__save-button"
           }
         >
           {buttonText}

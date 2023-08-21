@@ -1,5 +1,4 @@
 import React from "react";
-import "./Register.css";
 import ActionForm from "../ActionForm/ActionForm";
 
 function Register() {
