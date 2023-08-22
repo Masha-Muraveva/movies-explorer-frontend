@@ -15,28 +15,28 @@ function ActionForm({
   isLoading,
 }) {
   return (
-    <div className="form__container">
-      <Link to="/" className="form__logo">
+    <div className="action-form">
+      <Link to="/" className="action-form__logo">
         <img src={logo} alt="Логотип" />
       </Link>
-      <h3 className="form__title">{title}</h3>
-      <form className="form" id="form" onSubmit={onSubmit} noValidate>
+      <h3 className="action-form__title">{title}</h3>
+      <form className="action-form__form" id="form" onSubmit={onSubmit} noValidate>
         {children}
         <button
           type="submit"
           disabled={isDisabled ? true : false}
           className={
             isDisabled || isLoading
-              ? "form__save-button form__save-button_inactive"
-              : "form__save-button"
+              ? "action-form__save-button action-form__save-button_inactive"
+              : "action-form__save-button"
           }
         >
           {buttonText}
         </button>
       </form>
-      <p className="form__text">
+      <p className="action-form__text">
         {question}
-        <Link to={link} className="form__link">
+        <Link to={link} className="action-form__link">
           {linkText}
         </Link>
       </p>

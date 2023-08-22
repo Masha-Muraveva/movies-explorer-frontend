@@ -56,8 +56,6 @@ function Header() {
         <Link to="/" className="header__logo">
           <img src={logo} alt="Логотип" />
         </Link>
-
-        <nav className="header__buttons-wrapper">
           <ul className="header__buttons-wrapper-auth">
             <li className="header__buttons-wrapper-item">
               <NavLink
@@ -86,7 +84,6 @@ function Header() {
           >
             <img src={menu} alt="меню" />
           </button>
-        </nav>
         {isClicked ? <Navigation handleClose={handleClose} /> : ""}
       </header>
       )}

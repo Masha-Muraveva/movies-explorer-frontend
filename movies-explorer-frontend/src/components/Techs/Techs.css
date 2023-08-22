@@ -104,6 +104,7 @@
     padding-bottom: 28px;
     font-size: 18px;
     line-height: 22px;
+    border-bottom: 1px solid #000;
   }
 
   .techs__heading {

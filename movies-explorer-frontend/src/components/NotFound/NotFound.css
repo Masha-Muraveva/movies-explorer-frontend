@@ -5,16 +5,16 @@
 }
 
 .not-found__title {
-  margin-top: 246px;
+  margin-top: 250px;
   font-style: normal;
   font-weight: 400;
   font-size: 140px;
-  line-height: 169px;
+  line-height: 160px;
   text-align: center;
 }
 
 .not-found__text {
-  margin-top: 5px;
+  margin-top: -105px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -23,7 +23,7 @@
 }
 
 .not-found__button {
-  margin-top: 184px;
+  margin-top: 170px;
   margin-bottom: 60px;
   min-height: 17px;
   text-decoration: none;
@@ -58,13 +58,13 @@
   }
 
   .not-found__text {
-    margin-top: 10px;
+    margin-top: -55px;
     font-size: 12px;
     line-height: 15px;
   }
 
   .not-found__button {
-    margin-top: 284px;
+    margin-top: 270px;
     margin-bottom: 30px;
     min-height: 15px;
     font-size: 12px;

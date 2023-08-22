@@ -19,7 +19,7 @@ function MoviesCardList() {
   return (
     <section className="cards">
       { isMoviesLocation &&
-        <div>
+        <div className="cards__wrapper">
           <ul className="cards__list">
             <MoviesCard img={cardPhoto} isCardSaved={true} />
             <MoviesCard img={cardPhoto2} isCardSaved={false} />

@@ -9,28 +9,31 @@ function Login() {
       question="Еще не зарегистрированы?"
       linkText="Регистрация"
       link="/signup"
+      className="action-form"
     >
-      <label className="form__field">
+      <label className="action-form__field">
         E-mail
         <input
           name="email"
-          className="form__input"
+          className="action-form__input"
           id="email-input"
           type="email"
+          placeholder="email"
           required
         />
-        <span className="form__input-error">{}</span>
+        <span className="action-form__input-error">{}</span>
       </label>
-      <label className="form__field">
+      <label className="action-form__field">
         Пароль
         <input
           name="password"
-          className="form__input"
+          className="action-form__input"
           id="password-input"
           type="password"
+          placeholder="password"
           required
         />
-        <span className="form__input-error">{}</span>
+        <span className="action-form__input-error">{}</span>
       </label>
     </ActionForm>
   );

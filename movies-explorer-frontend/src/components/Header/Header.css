@@ -54,7 +54,7 @@
   gap: 21px;
   justify-content: space-between;
   margin-right: 20px;
-  margin: 0;
+  margin: 0 auto 0 426px;
   padding: 0;
 }
 
@@ -110,6 +110,18 @@
   opacity: 0.8;
 }
 
+@media screen and (max-width: 1024px) {
+  .header__buttons-wrapper-auth {
+    margin-left: 300px;
+  }
+}
+
+@media screen and (max-width: 856px) {
+  .header__buttons-wrapper-auth {
+    margin-left: 200px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding: 0 30px;
@@ -135,7 +147,7 @@
     padding: 0 14px;
   }
 
-  .header__button-wrapper {
+  .header__buttons-wrapper {
     gap: 14px;
   }
 

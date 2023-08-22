@@ -18,7 +18,7 @@ function MoviesCard(props) {
   }
 
   return (
-    <li className="card__wrapper">
+    <li className="card">
       { isMovieSavedLocation &&
         <button type="button" onClick={handleDeleteCard} className="card__button card__button_type_delete-saving">
         </button>
@@ -27,7 +27,7 @@ function MoviesCard(props) {
         <button type="button" onClick={handleSaveCard} className={`card__button ${props.isCardSaved ? "card__button_type_saved" : "card__button_type_add-saving"}`}>
         </button>
       }
-      <img className="card__image" src={props.img} alt="Фото-превью фильма"/>
+      <img className="card__image" src={props.img} alt={`Обложка фильма: ${props.title}`} />
       <div className="card__info-wrapper">
         <h2 className="card__name">33 слова о дизайне</h2>
         <span className="card__duration">1ч 17м</span>

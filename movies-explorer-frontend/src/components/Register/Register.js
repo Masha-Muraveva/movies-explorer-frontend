@@ -9,41 +9,45 @@ function Register() {
       question="Уже зарегистрированы?"
       linkText=" Войти"
       link="/signin"
+      className="action-form"
     >
-      <label className="form__field">
+      <label className="action-form__field">
         Имя
         <input
           name="name"
-          className="form__input"
+          className="action-form__input"
           id="name-input"
           type="text"
           minLength="2"
           maxLength="40"
           required
+          placeholder="name"
         />
-        <span className="form__input-error">{}</span>
+        <span className="action-form__input-error">{}</span>
       </label>
-      <label className="form__field">
+      <label className="action-form__field">
         E-mail
         <input
           name="email"
-          className="form__input"
+          className="action-form__input"
           id="email-input"
           type="email"
           required
+          placeholder="email"
         />
-        <span className="form__input-error">{}</span>
+        <span className="action-form__input-error">{}</span>
       </label>
-      <label className="form__field">
+      <label className="action-form__field">
         Пароль
         <input
           name="password"
-          className="form__input"
+          className="action-form__input"
           id="password-input"
           type="password"
+          placeholder="password"
           required
         />
-        <span className="form__input-error">{}</span>
+        <span className="action-form__input-error">{}</span>
       </label>
     </ActionForm>
   );
