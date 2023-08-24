@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -9,43 +9,34 @@ import Profile from '../Profile/Profile';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
+  const location = useLocation()
+
+  const showHeader = () => {
+    const { pathname } = location
+    return pathname === "/"
+  }
+    const showFooter = () => {
+    const { pathname } = location
+    return pathname === "/"
+  }
+  
   return (
     <div className="page">
       <section className="page__content">
+        {showHeader() && <Header />}
         <Routes>
-          <Route path="/signup">
-            <Header />
-            <Register />
-            <Footer />
-          </Route>
-          <Route path="/signin">
-            <Header />
-            <Login />
-            <Footer />
-          </Route>
-          <Route path="/movies">
-            <Header />
-            <Movies />
-            <Footer />
-          </Route>
-          <Route path="/saved-movies">
-            <Header />
-            <SavedMovies />
-            <Footer />
-          </Route>
-          <Route path="/profile">
-            <Header />
-            <Profile />
-            <Footer />
-          </Route>
-          <Route exact path="/">
-            <Header />
-            <Main />
-            <Footer />
-          </Route>
+          <Route path="/signup" element={<Register />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route exact path="/" element={<Main />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
+        {showFooter() && <Footer />}
       </section>
     </div>
   );
