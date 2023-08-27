@@ -1,50 +1,131 @@
-import React from 'react';
-import './MoviesCardList.css';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import cardPhoto from '../../images/cardPhoto.jpg';
-import cardPhoto2 from '../../images/cardPhoto2.jpg';
-import cardPhoto3 from '../../images/cardPhoto3.jpg';
-import cardPhoto4 from '../../images/cardPhoto4.jpg';
-import cardPhoto5 from '../../images/cardPhoto5.jpg';
-import cardPhoto6 from '../../images/cardPhoto6.jpg';
-import cardPhoto7 from '../../images/cardPhoto7.jpg';
-import cardPhoto8 from '../../images/cardPhoto8.jpg';
+
+import './MoviesCardList.css';
+
+import Preloader from "../Preloader/Preloader";
+import SearchError from "../SearchError/SearchError";
+import MoviesCard from '../MoviesCard/MoviesCard';
+
+import {
+  MORE_FILMS_DESKTOP,
+  MORE_FILMS_TABLET,
+  MORE_FILMS_MOBILE,
+} from "../../constants/constants";
+
+function MoviesCardList({
+  cards,
+  isLoading,
+  isSavedMovieCard,
+  savedMovies,
+  isRequestError,
+  isNotFound,
+  handleLikeCard,
+  handleDeleteCard,
+}) {
+  const { pathname } = useLocation();
+  const [shownMovies, setShownMovies] = useState(0);
+
+  function shownCountOfMovies() {
+    const display = window.innerWidth;
+    if (display > 1024) {
+      setShownMovies(12);
+    } else if (display > 750) {
+      setShownMovies(8);
+    } else {
+      setShownMovies(5);
+    }
+  };
+
+  useEffect(() => {
+    shownCountOfMovies();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener("resize", shownCountOfMovies);
+    }, 500);
+  });
+
+  function showMoreMovies() {
+    const display = window.innerWidth;
+    if (display > 1024) {
+      setShownMovies(shownMovies + MORE_FILMS_DESKTOP);
+    } else if (display > 750) {
+      setShownMovies(shownMovies + MORE_FILMS_TABLET);
+    } else {
+      setShownMovies(shownMovies + MORE_FILMS_MOBILE);
+    }
+  };
+
+  function getSavedMovieCard(savedMovies, card) {
+    return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+  };
 
 
-function MoviesCardList() {
-  const location = useLocation();
-  const isMoviesLocation = location.pathname === '/movies';
 
   return (
     <section className="cards">
-      { isMoviesLocation &&
-        <div className="cards__wrapper">
-          <ul className="cards__list">
-            <MoviesCard img={cardPhoto} isCardSaved={true} />
-            <MoviesCard img={cardPhoto2} isCardSaved={false} />
-            <MoviesCard img={cardPhoto3} isCardSaved={false} />
-            <MoviesCard img={cardPhoto4} isCardSaved={true} />
-            <MoviesCard img={cardPhoto5} isCardSaved={true} />
-            <MoviesCard img={cardPhoto6} isCardSaved={false} />
-            <MoviesCard img={cardPhoto7} isCardSaved={true} />
-            <MoviesCard img={cardPhoto8} isCardSaved={false} />
-          </ul>
-          <div className="cards__button-wrapper">
-            <button className="cards__button-more">Ещё</button>
-          </div>
-        </div>
-      }
-      { !isMoviesLocation &&
-        <div>
-          <ul className="cards__list">
-          <MoviesCard img={cardPhoto} />
-          <MoviesCard img={cardPhoto4} />
-          <MoviesCard img={cardPhoto5} />
-          <MoviesCard img={cardPhoto7} />
-          </ul>
-          </div>
-      }
+      {isLoading && <Preloader />}
+      {isNotFound && !isLoading && (
+        <SearchError errorText={"По вашему запросу ничего не нашлось"} />
+      )}
+      {isRequestError && !isLoading && (
+      <SearchError
+        errorText={
+          "Ой, ошибочка вышла :) Попробуйте ещё разок!"
+        }
+      />
+      )}
+      {!isLoading && !isRequestError && !isNotFound && (
+        <>
+          {pathname === "/saved-movies" ? (
+            <>
+              <ul className="cards__list">
+              {cards.map((card) => (
+                <MoviesCard 
+                  key={isSavedMovieCard ? card._id : card.id}
+                  saved={getSavedMovieCard(savedMovies, card)}
+                  cards={cards}
+                  card={card}
+                  isSavedMovieCard={isSavedMovieCard}
+                  handleLikeCard={handleLikeCard}
+                  handleDeleteCard={handleDeleteCard}
+                  savedMovies={savedMovies} 
+                />
+              ))}
+              </ul>
+              <div className="cards__button-wrapper"></div>
+            </>
+          ) : (
+            <>
+              <ul className="cards__list">
+                {cards.slice(0, shownMovies).map((card) => (
+                  <MoviesCard
+                  key={isSavedMovieCard ? card._id : card.id}
+                  saved={getSavedMovieCard(savedMovies, card)}
+                  cards={cards}
+                  card={card}
+                  isSavedMovieCard={isSavedMovieCard}
+                  handleLikeCard={handleLikeCard}
+                  handleDeleteCard={handleDeleteCard}
+                  savedMovies={savedMovies}
+                  />
+                ))}
+              </ul>
+              <div className="cards__button-wrapper">
+                {cards.length > shownMovies ? (
+                  <button className="cards__button-more" onClick={showMoreMovies}>
+                    Ещё
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            </>
+          )}
+        </>
+      )}
     </section>
   );
 }

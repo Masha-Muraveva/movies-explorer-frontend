@@ -1,7 +1,20 @@
 import React from "react";
 import ActionForm from "../ActionForm/ActionForm";
+import useForm from "../../hooks/useForm";
+import { EMAIL_REGEX } from "../../constants/constants";
 
-function Register() {
+function Register({ onRegister, isLoading }) {
+  const { values, errors, handleChange, isValid } = useForm();
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    onRegister({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
+  }
+
   return (
     <ActionForm
       title="Добро пожаловать!"
@@ -10,6 +23,9 @@ function Register() {
       linkText=" Войти"
       link="/signin"
       className="action-form"
+      onSubmit={handleFormSubmit}
+      isDisabled={!isValid}
+      isLoading={isLoading}
     >
       <label className="action-form__field">
         Имя
@@ -22,8 +38,10 @@ function Register() {
           maxLength="40"
           required
           placeholder="name"
+          onChange={handleChange}
+          value={values.name || ""}
         />
-        <span className="action-form__input-error">{}</span>
+        <span className="action-form__input-error">{errors.name}</span>
       </label>
       <label className="action-form__field">
         E-mail
@@ -34,8 +52,11 @@ function Register() {
           type="email"
           required
           placeholder="email"
+          onChange={handleChange}
+          pattern={EMAIL_REGEX}
+          value={values.email || ""}
         />
-        <span className="action-form__input-error">{}</span>
+        <span className="action-form__input-error">{errors.email}</span>
       </label>
       <label className="action-form__field">
         Пароль
@@ -46,8 +67,12 @@ function Register() {
           type="password"
           placeholder="password"
           required
+          minLength="4"
+          maxLength="15"
+          onChange={handleChange}
+          value={values.password || ""}
         />
-        <span className="action-form__input-error">{}</span>
+        <span className="action-form__input-error">{errors.password}</span>
       </label>
     </ActionForm>
   );

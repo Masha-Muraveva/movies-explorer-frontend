@@ -18,3 +18,5 @@ IP: 158.160.120.19
 Ссылка на репозиторий: https://github.com/Masha-Muraveva/movies-explorer-frontend
 
 Ссылка на сайт: https://movies.masha-muraveva.nomoreparties.co
+
+Ссылка на pull request:

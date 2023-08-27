@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
 import logo from "../../images/logo.svg";
@@ -7,23 +7,7 @@ import menu from "../../images/burger-menu.svg";
 
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
-  const location = useLocation();
-
-  const showAuthorizedHeader = () => {
-    const { pathname } = location;
-    return (
-      pathname === "/movies" ||
-      pathname === "/saved-movies" ||
-      pathname === "/profile"
-    );
-  };
-
-  const showUnauthorizedHeader = () => {
-    const { pathname } = location;
-    return pathname === "/";
-  };
-
+function Header({ loggedIn }) {
   const [isClicked, setIsClicked] = React.useState(false);
 
   function handleOpen() {
@@ -34,33 +18,35 @@ function Header() {
     setIsClicked(false);
   }
 
+  const setActive = ({ isActive }) =>
+    isActive ? "header__button_active" : "header__button";
+
   return (
     <>
-      {showUnauthorizedHeader() && (
+      {!loggedIn ? (
         <header className="header" id="header">
-        <Link to="/" className="header__logo">
-          <img src={logo} alt="Логотип сайта" />
-        </Link>
-        <nav className="header__buttons-wrapper">
-          <Link to="/signup" className="header__button">
-            Регистрация
+          <Link to="/" className="header__logo">
+            <img src={logo} alt="Логотип сайта" />
           </Link>
-          <Link to="/signin" className="header__button header__button_accent">
-            Войти
-          </Link>
-        </nav>
-      </header>
-      )} 
-      {showAuthorizedHeader() && (
+          <nav className="header__buttons-wrapper">
+            <Link to="/signup" className="header__button">
+              Регистрация
+            </Link>
+            <Link to="/signin" className="header__button header__button_accent">
+              Войти
+            </Link>
+          </nav>
+        </header>
+      ) : (
         <header className="header" id="header">
-        <Link to="/" className="header__logo">
-          <img src={logo} alt="Логотип" />
-        </Link>
+          <Link to="/" className="header__logo">
+            <img src={logo} alt="Логотип" />
+          </Link>
           <ul className="header__buttons-wrapper-auth">
             <li className="header__buttons-wrapper-item">
               <NavLink
                 to="/movies"
-                className="header__button header__button_type_auth"
+                className={setActive}
               >
                 Фильмы
               </NavLink>
@@ -68,7 +54,7 @@ function Header() {
             <li className="header__buttons-wrapper-item">
               <NavLink
                 to="/saved-movies"
-                className="header__button header__button_type_auth"
+                className={setActive}
               >
                 Сохранённые фильмы
               </NavLink>
@@ -84,8 +70,8 @@ function Header() {
           >
             <img src={menu} alt="меню" />
           </button>
-        {isClicked ? <Navigation handleClose={handleClose} /> : ""}
-      </header>
+          {isClicked ? <Navigation handleClose={handleClose} /> : ""}
+        </header>
       )}
     </>
   );

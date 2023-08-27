@@ -1,36 +1,50 @@
 import React from "react";
 import "./MoviesCard.css";
-import { useLocation } from 'react-router-dom';
 
-function MoviesCard(props) {
+import { durationConverter } from "../../utils/filter";
 
-  const location = useLocation();
-  const isMovieSavedLocation = location.pathname === '/saved-movies';
-
-  const [isCardSaved, setCardSaved ] = React.useState(false);
-
-  function handleSaveCard() {
-    isCardSaved ? setCardSaved(false) : setCardSaved(true);
+function MoviesCard({
+    card,
+    isSavedMovieCard,
+    handleLikeCard,
+    handleDeleteCard,
+    saved,
+    savedMovies,
   }
+  ) {
+    function onCardClick() {
+      if (saved) {
+        handleDeleteCard(savedMovies.filter((m) => m.movieId === card.id)[0]);
+      } else {
+        handleLikeCard(card);
+      }
+    };
 
-  function handleDeleteCard() {
-    setCardSaved(false);
-  }
+    function onDelete() {
+      handleDeleteCard(card);
+    };
+
+    const cardLikeButtonClassName = `${
+      saved ? "card__button card__button_type_saved" : "card__button_type_add-saving"
+    }`;
+
 
   return (
-    <li className="card">
-      { isMovieSavedLocation &&
-        <button type="button" onClick={handleDeleteCard} className="card__button card__button_type_delete-saving">
+    <li className="card" key={card.id}>
+      {isSavedMovieCard ? (
+        <button type="button" onClick={onDelete} className="card__button card__button_type_delete-saving">
         </button>
-      }
-      { !isMovieSavedLocation && 
-        <button type="button" onClick={handleSaveCard} className={`card__button ${props.isCardSaved ? "card__button_type_saved" : "card__button_type_add-saving"}`}>
+      ) : (
+        <button type="button" onClick={onCardClick} className={cardLikeButtonClassName}>
         </button>
+      )
       }
-      <img className="card__image" src={props.img} alt={`Обложка фильма: ${props.title}`} />
+      <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <img className="card__image" src={isSavedMovieCard ? card.image : `https://api.nomoreparties.co/${card.image.url}`} alt={card.nameRU} />
+      </a>
       <div className="card__info-wrapper">
-        <h2 className="card__name">33 слова о дизайне</h2>
-        <span className="card__duration">1ч 17м</span>
+        <h2 className="card__name">{card.nameRU}</h2>
+        <span className="card__duration">{durationConverter(card.duration)}</span>
       </div>
     </li>
   );
