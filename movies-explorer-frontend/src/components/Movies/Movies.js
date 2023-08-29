@@ -6,9 +6,9 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from "../Footer/Footer";
 
 import { filterMovies, filterDuration } from "../../utils/filter";
-import * as movies from "../../utils/MoviesApi";
+import { getMovies } from "../../utils/MoviesApi";
 
-function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
+function Movies({ loggedIn, handleLikeCard, handleDeleteCard, savedMovies }) {
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,17 +45,19 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
     localStorage.setItem("movieSearch", request);
     localStorage.setItem("shortMovies", isShortFilm);
 
+    getMoviesData(request);
+  }
+
+  function getMoviesData(request) {
     if (localStorage.getItem("allMovies")) {
       const movies = JSON.parse(localStorage.getItem("allMovies"));
       handleUpdateFilteredMovies(movies, request, isShortFilm);
     } else {
       setIsLoading(true);
-      movies
-        .getMovies()
+      getMovies()
         .then((cardsData) => {
           handleUpdateFilteredMovies(cardsData, request, isShortFilm);
           setIsRequestError(false);
-          console.log(cardsData);
         })
         .catch((err) => {
           setIsRequestError(true);
@@ -66,6 +68,11 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
         });
     }
   }
+
+  useEffect(() => {
+    getMoviesData("");
+  }, []);
+
 
   useEffect(() => {
     if (localStorage.getItem("shortMovies") === "true") {
@@ -115,8 +122,8 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
           isReqError={isRequestError}
           isNotFound={isNotFound}
           savedMovies={savedMovies}
-          handleLikeFilm={handleLikeFilm}
-          onDeleteCard={onDeleteCard}
+          handleLikeCard={handleLikeCard}
+          handleDeleteCard={handleDeleteCard}
           />
           
         <Footer />

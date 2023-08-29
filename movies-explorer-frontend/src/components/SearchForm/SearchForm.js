@@ -44,6 +44,7 @@ function SearchForm({ onSearchMoviesFilms, onFilterMovies, isShortFilm }) {
           required
           onChange={handleChangeInputRequest}
           value={request || ""}
+          autoComplete="off"
         >
         </input>
         <button className="search__button" type="submit"></button>
@@ -56,6 +57,8 @@ function SearchForm({ onSearchMoviesFilms, onFilterMovies, isShortFilm }) {
       {isRequestError && (
         <span className="search__form-error">Нужно ввести ключевое слово</span>
       )}
+
+      <div className="search__border-bottom"></div>
     </section>
   );
 }

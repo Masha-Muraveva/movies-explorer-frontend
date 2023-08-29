@@ -25,7 +25,7 @@ function MoviesCard({
     };
 
     const cardLikeButtonClassName = `${
-      saved ? "card__button card__button_type_saved" : "card__button_type_add-saving"
+      saved ? "card__button card__button_type_saved" : "card__button card__button_type_add-saving"
     }`;
 
 

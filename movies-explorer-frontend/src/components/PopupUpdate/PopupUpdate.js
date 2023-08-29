@@ -17,7 +17,9 @@ function PopupUpdate(props) {
         ) : (
           <>
             <p className="popup__title">
-              Что-то не так. Обновить информацию не удалось :(
+              Обновить информацию не удалось :(
+            </p>
+            <p className="popup__title">
               Попробуйте ещё раз!
             </p>
           </>

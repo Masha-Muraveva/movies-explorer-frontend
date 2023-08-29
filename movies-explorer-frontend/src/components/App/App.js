@@ -53,7 +53,6 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
@@ -92,7 +91,7 @@ function App() {
           setPopupOpen(true);
           setIsSuccess(true);
           localStorage.setItem("jwt", res.token);
-          navigate("./movies");
+          navigate("/movies");
           setIsLoggedIn(true);
         }
       })
@@ -127,7 +126,8 @@ function App() {
     if (isLoggedIn) {
       getUserInfo()
         .then((profileInfo) => {
-          setCurrentUser(profileInfo);
+          setCurrentUser(profileInfo.user);
+          console.log(profileInfo);
         })
         .catch((err) => {
           console.log(err);
@@ -135,8 +135,8 @@ function App() {
       
       getMovies()
         .then((cardsData) => {
-          console.log(cardsData);
-          setSavedMovies(cardsData.reverse());
+          console.log(cardsData.data);
+          setSavedMovies(cardsData.data.reverse());
         })
         .catch((err) => {
           console.log(err);
@@ -147,10 +147,10 @@ function App() {
   function handleUpdateUser(newUserInfo) {
     setIsLoading(true);
     updateUserInfo(newUserInfo)
-      .then((data) => {
+      .then((newUserInfo) => {
         setPopupUpdateOpen(true);
         setIsUpdate(true);
-        setCurrentUser(data);
+        setCurrentUser(newUserInfo);
       })
       .catch((err) => {
         setPopupUpdateOpen(true);
@@ -163,7 +163,7 @@ function App() {
       });
   };
 
-  function handleCardLike(card) {
+  function handleLikeCard(card) {
     saveMovieCard(card)
       .then((newMovie) => {
         setSavedMovies([newMovie, ...savedMovies]);
@@ -175,7 +175,7 @@ function App() {
       });
   };
 
-  function handleCardDelete(card) {
+  function handleDeleteCard(card) {
     deleteSavedMovieCard(card._id)
       .then(() => {
         setSavedMovies((state) =>
@@ -239,9 +239,9 @@ function App() {
                   path="/movies"
                   savedMovies={savedMovies}
                   loggedIn={isLoggedIn}
-                  onDeleteCard={handleCardDelete}
+                  handleDeleteCard={handleDeleteCard}
                   component={Movies}
-                  handleLikeFilm={handleCardLike} 
+                  handleLikeCard={handleLikeCard} 
                 />
               } 
             />
@@ -253,7 +253,7 @@ function App() {
                   path="/saved-movies"
                   savedMovies={savedMovies}
                   loggedIn={isLoggedIn}
-                  onDeleteCard={handleCardDelete}
+                  handleDeleteCard={handleDeleteCard}
                   component={SavedMovies}
                 />
               } 

@@ -8,16 +8,18 @@ import { filterMovies, filterDuration } from "../../utils/filter";
 
 function SavedMovies({ loggedIn, savedMovies, handleDeleteCard }) {
   const [filteredMovies, setFilteredMovies] = useState(savedMovies);
-  const [isShortFilm, setisShortFilm] = useState(false);
+  const [isShortFilm, setIsShortFilm] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [searchRequest, setSearchRequest] = useState("");
+
+  console.log(savedMovies);
 
   function onSearchMoviesFilms(request) {
     setSearchRequest(request);
   };
 
   function handleShortFilmToggle() {
-    setisShortFilm(!isShortFilm);
+    setIsShortFilm(!isShortFilm);
   };
 
   useEffect(() => {
@@ -44,7 +46,7 @@ function SavedMovies({ loggedIn, savedMovies, handleDeleteCard }) {
         />
         <MoviesCardList 
         isNotFound={isNotFound}
-        isSavedFilms={true}
+        isSavedMovieCard={true}
         cards={filteredMovies}
         savedMovies={savedMovies}
         handleDeleteCard={handleDeleteCard}

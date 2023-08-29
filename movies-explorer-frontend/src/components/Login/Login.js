@@ -35,11 +35,12 @@ function Login({ onLogin, isLoading }) {
           className="action-form__input"
           id="email-input"
           type="email"
-          placeholder="email"
+          placeholder="Введите email"
           required
           onChange={handleChange}
           pattern={EMAIL_REGEX}
           value={values.email || ""}
+          autoComplete="off"
         />
 
         <span className="action-form__input-error">{errors.email}</span>
@@ -53,10 +54,11 @@ function Login({ onLogin, isLoading }) {
           className="action-form__input"
           id="password-input"
           type="password"
-          placeholder="password"
+          placeholder="Введите пароль"
           required
           onChange={handleChange}
           value={values.password || ""}
+          autoComplete="off"
         />
 
         <span className="action-form__input-error">{errors.password}</span>

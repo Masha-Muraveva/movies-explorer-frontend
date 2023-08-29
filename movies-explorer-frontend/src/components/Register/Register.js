@@ -35,11 +35,12 @@ function Register({ onRegister, isLoading }) {
           id="name-input"
           type="text"
           minLength="2"
-          maxLength="40"
+          maxLength="30"
           required
-          placeholder="name"
+          placeholder="Введите имя"
           onChange={handleChange}
           value={values.name || ""}
+          autoComplete="off"
         />
         <span className="action-form__input-error">{errors.name}</span>
       </label>
@@ -51,10 +52,11 @@ function Register({ onRegister, isLoading }) {
           id="email-input"
           type="email"
           required
-          placeholder="email"
+          placeholder="Введите email"
           onChange={handleChange}
           pattern={EMAIL_REGEX}
           value={values.email || ""}
+          autoComplete="off"
         />
         <span className="action-form__input-error">{errors.email}</span>
       </label>
@@ -65,12 +67,13 @@ function Register({ onRegister, isLoading }) {
           className="action-form__input"
           id="password-input"
           type="password"
-          placeholder="password"
+          placeholder="Введите пароль"
           required
           minLength="4"
           maxLength="15"
           onChange={handleChange}
           value={values.password || ""}
+          autoComplete="off"
         />
         <span className="action-form__input-error">{errors.password}</span>
       </label>
