@@ -19,4 +19,4 @@ IP: 158.160.120.19
 
 Ссылка на сайт: https://movies.masha-muraveva.nomoreparties.co
 
-Ссылка на pull request:
+Ссылка на pull request: https://github.com/Masha-Muraveva/movies-explorer-frontend/pull/2

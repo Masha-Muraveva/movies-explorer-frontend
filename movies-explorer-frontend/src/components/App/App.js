@@ -127,7 +127,6 @@ function App() {
       getUserInfo()
         .then((profileInfo) => {
           setCurrentUser(profileInfo.user);
-          console.log(profileInfo);
         })
         .catch((err) => {
           console.log(err);
@@ -135,7 +134,6 @@ function App() {
       
       getMovies()
         .then((cardsData) => {
-          console.log(cardsData.data);
           setSavedMovies(cardsData.data.reverse());
         })
         .catch((err) => {
@@ -150,7 +148,7 @@ function App() {
       .then((newUserInfo) => {
         setPopupUpdateOpen(true);
         setIsUpdate(true);
-        setCurrentUser(newUserInfo);
+        setCurrentUser(newUserInfo.user);
       })
       .catch((err) => {
         setPopupUpdateOpen(true);
