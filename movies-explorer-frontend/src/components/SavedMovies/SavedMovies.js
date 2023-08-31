@@ -12,8 +12,6 @@ function SavedMovies({ loggedIn, savedMovies, handleDeleteCard }) {
   const [isNotFound, setIsNotFound] = useState(false);
   const [searchRequest, setSearchRequest] = useState("");
 
-  console.log(savedMovies);
-
   function onSearchMoviesFilms(request) {
     setSearchRequest(request);
   };

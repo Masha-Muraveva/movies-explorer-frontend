@@ -34,7 +34,7 @@ function SearchForm({ onSearchMoviesFilms, onFilterMovies, isShortFilm }) {
 
   return (
     <section className="search">
-      <form className="search__form" id="form" onSubmit={handleFormSubmit}>
+      <form className="search__form" id="form" onSubmit={handleFormSubmit} noValidate>
         <input
           name="selected-film"
           className="search__input"

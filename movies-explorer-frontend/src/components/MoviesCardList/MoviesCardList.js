@@ -30,7 +30,7 @@ function MoviesCardList({
     const display = window.innerWidth;
     if (display > 1024) {
       setShownMovies(12);
-    } else if (display > 750) {
+    } else if (display > 620) {
       setShownMovies(8);
     } else {
       setShownMovies(5);
@@ -51,7 +51,7 @@ function MoviesCardList({
     const display = window.innerWidth;
     if (display > 1024) {
       setShownMovies(shownMovies + MORE_FILMS_DESKTOP);
-    } else if (display > 750) {
+    } else if (display > 620) {
       setShownMovies(shownMovies + MORE_FILMS_TABLET);
     } else {
       setShownMovies(shownMovies + MORE_FILMS_MOBILE);

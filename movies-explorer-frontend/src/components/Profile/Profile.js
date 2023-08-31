@@ -11,8 +11,6 @@ function Profile({ isLoading, signOut, onUpdateUser, loggedIn }) {
 
   const { values, errors, handleChange, isValid, resetForm } = useForm();
 
-  const [isPreviousValues, setIsPreviousValues] = useState(false);
-
   useEffect(() => {
     if (currentUser) {
       resetForm(currentUser);
@@ -25,22 +23,13 @@ function Profile({ isLoading, signOut, onUpdateUser, loggedIn }) {
       name: values.name,
       email: values.email,
     });
-  }
+  };
 
-  useEffect(() => {
-    if (
-      currentUser.name === values.name &&
+  const isIncorrectСonditions =
+    !isValid || (
+      currentUser.name === values.name && 
       currentUser.email === values.email
-    ) {
-      setIsPreviousValues(true);
-    } else {
-      setIsPreviousValues(false);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
-
-  console.log(currentUser);
+    );
 
   return (
     <>
@@ -88,12 +77,8 @@ function Profile({ isLoading, signOut, onUpdateUser, loggedIn }) {
           </label>
           <button 
             type="submit"
-            className={
-              !isValid || isLoading || isPreviousValues
-              ? "profile__edit-button action-form__save-button_inactive"
-              : "profile__edit-button"
-            }
-            disabled={!isValid ? true : false}
+            className="profile__edit-button"
+            disabled={isIncorrectСonditions || isLoading}
           >
             Редактировать
           </button>

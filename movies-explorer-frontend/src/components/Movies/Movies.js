@@ -70,11 +70,6 @@ function Movies({ loggedIn, handleLikeCard, handleDeleteCard, savedMovies }) {
   }
 
   useEffect(() => {
-    getMoviesData("");
-  }, []);
-
-
-  useEffect(() => {
     if (localStorage.getItem("shortMovies") === "true") {
       setIsShortFilm(true);
     } else {
