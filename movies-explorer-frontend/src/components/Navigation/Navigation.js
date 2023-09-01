@@ -3,6 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 
 function Navigation({ handleClose }) {
+  const setActive = ({ isActive }) =>
+    isActive ? "navigation__link_active" : "navigation__link";
+
   return (
     <div className="navigation">
       <div className="navigation__overlay-wrapper"></div>
@@ -16,24 +19,30 @@ function Navigation({ handleClose }) {
           <NavLink
             exact
             to="/"
-            className="navigation__link"
+            className={setActive}
           >
             Главная
           </NavLink>
           <NavLink
             to="/movies"
-            className="navigation__link"
+            onClick={handleClose}
+            className={setActive}
           >
             Фильмы
           </NavLink>
           <NavLink
             to="/saved-movies"
-            className="navigation__link"
+            onClick={handleClose}
+            className={setActive}
           >
             Сохранённые фильмы
           </NavLink>
         </nav>
-        <Link to="/profile" className="navigation__account-button">
+        <Link 
+          to="/profile" 
+          className="navigation__account-button"
+          onClick={handleClose}
+        >
           Аккаунт
         </Link>
       </div>

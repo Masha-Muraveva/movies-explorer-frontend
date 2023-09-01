@@ -71,6 +71,21 @@
     border-bottom: 2px solid transparent;
   }
 
+  .navigation__link_active {
+    font-weight: 500;
+    min-height: 32px;
+    text-align: right;
+    line-height: 16px;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: underline 1px;
+    text-underline-position: from-font;
+  }
+
+
   .navigation__link:hover {
     border-bottom: 2px solid #fff;
   }

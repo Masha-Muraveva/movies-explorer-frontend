@@ -77,6 +77,19 @@
   margin-right: 20px;
 }
 
+.header__button_active {
+  font-weight: 500;
+  min-height: 32px;
+  text-align: right;
+  line-height: 16px;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+
 .header__account-button {
   color: #fff;
   background-color: #313131;
