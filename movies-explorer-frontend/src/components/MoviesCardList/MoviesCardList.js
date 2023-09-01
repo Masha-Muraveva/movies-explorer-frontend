@@ -8,6 +8,9 @@ import SearchError from "../SearchError/SearchError";
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 import {
+  COUNT_OF_FILMS_DESKTOP, 
+  COUNT_OF_FILMS_TABLET,
+  COUNT_OF_FILMS_MOBILE,
   MORE_FILMS_DESKTOP,
   MORE_FILMS_TABLET,
   MORE_FILMS_MOBILE,
@@ -28,13 +31,32 @@ function MoviesCardList({
 
   function shownCountOfMovies() {
     const display = window.innerWidth;
+    let initialCount = 0;
+
     if (display > 1024) {
-      setShownMovies(12);
+      initialCount = COUNT_OF_FILMS_DESKTOP;
     } else if (display > 620) {
-      setShownMovies(8);
+      initialCount = COUNT_OF_FILMS_TABLET;
     } else {
-      setShownMovies(5);
+      initialCount = COUNT_OF_FILMS_MOBILE;
     }
+
+    setShownMovies(initialCount);
+  };
+
+  function showMoreMovies() {
+    const display = window.innerWidth;
+    let additionalCount = 0;
+    
+    if (display > 1024) {
+      additionalCount = MORE_FILMS_DESKTOP;
+    } else if (display > 620) {
+      additionalCount = MORE_FILMS_TABLET;
+    } else {
+      additionalCount = MORE_FILMS_MOBILE;
+    }
+    
+    setShownMovies(shownMovies + additionalCount);
   };
 
   useEffect(() => {
@@ -42,21 +64,14 @@ function MoviesCardList({
   }, []);
 
   useEffect(() => {
+    shownCountOfMovies();
+  }, [cards]);
+
+  useEffect(() => {
     setTimeout(() => {
       window.addEventListener("resize", shownCountOfMovies);
     }, 500);
   });
-
-  function showMoreMovies() {
-    const display = window.innerWidth;
-    if (display > 1024) {
-      setShownMovies(shownMovies + MORE_FILMS_DESKTOP);
-    } else if (display > 620) {
-      setShownMovies(shownMovies + MORE_FILMS_TABLET);
-    } else {
-      setShownMovies(shownMovies + MORE_FILMS_MOBILE);
-    }
-  };
 
   function getSavedMovieCard(savedMovies, card) {
     return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);

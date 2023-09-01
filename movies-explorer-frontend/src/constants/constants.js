@@ -5,6 +5,10 @@ export const SHORTS_DURATION = 40;
 
 export const EMAIL_REGEX = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}";
 
+export const COUNT_OF_FILMS_DESKTOP = 12; 
+export const COUNT_OF_FILMS_TABLET = 8; 
+export const COUNT_OF_FILMS_MOBILE= 5;
+
 export const MORE_FILMS_DESKTOP = 3; 
 export const MORE_FILMS_TABLET = 2; 
-export const MORE_FILMS_MOBILE= 1;
+export const MORE_FILMS_MOBILE= 2;
